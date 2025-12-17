@@ -6,8 +6,8 @@ const Hero = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Effects */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-30" />
-      <div className="absolute inset-0 bg-radial-gradient" />
+      <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none" />
+      <div className="absolute inset-0 bg-radial-gradient pointer-events-none" />
       
       {/* Floating Elements */}
       <motion.div
@@ -16,7 +16,7 @@ const Hero = () => {
           rotate: [0, 5, 0]
         }}
         transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute top-1/4 left-10 md:left-20 w-20 h-20 rounded-full bg-primary/10 blur-xl"
+        className="absolute top-1/4 left-10 md:left-20 w-20 h-20 rounded-full bg-primary/10 blur-xl pointer-events-none"
       />
       <motion.div
         animate={{ 
@@ -24,7 +24,7 @@ const Hero = () => {
           rotate: [0, -5, 0]
         }}
         transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute bottom-1/4 right-10 md:right-20 w-32 h-32 rounded-full bg-cyan-500/10 blur-xl"
+        className="absolute bottom-1/4 right-10 md:right-20 w-32 h-32 rounded-full bg-cyan-500/10 blur-xl pointer-events-none"
       />
 
       <div className="container mx-auto px-4 md:px-6 pt-20">
@@ -47,9 +47,9 @@ const Hero = () => {
             className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
           >
             Hi, I'm{' '}
-            <span className="text-gradient">Zia</span>,
+            <span className="text-gradient">Zia uddin</span>,
             <br />
-            a Full Stack Dev.
+            a Front End Dev.
           </motion.h1>
 
           {/* Description */}
@@ -59,7 +59,7 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 2.6 }}
             className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8 font-mono"
           >
-            I build scalable, high-performance web applications with clean architecture and modern technologies.
+            I build web apps that scale smoothly, load fast, and don’t break on Monday mornings.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -75,18 +75,20 @@ const Hero = () => {
               className="gap-2 glow-effect"
               asChild
             >
-              <a href="#" target="_blank" rel="noopener noreferrer">
+              <a href="https://drive.google.com/file/d/1GtTZdFbMR63jvzeUu0eAmOgUXhshwbik/view?usp=sharing" target="_blank" rel="noopener noreferrer">
                 <FileText size={18} />
-                View Resume
+                Checkout Resume
               </a>
             </Button>
+            
+
             <Button
               variant="outline"
               size="lg"
               className="gap-2"
               asChild
             >
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/zia-rayan1998" target="_blank" rel="noopener noreferrer">
                 <Github size={18} />
                 GitHub
               </a>
