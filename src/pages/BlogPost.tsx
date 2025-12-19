@@ -7,6 +7,9 @@ import { format } from 'date-fns';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 
+// If you prefer local curated posts, set this to true.
+const USE_LOCAL_BLOGS = true;
+
 interface BlogPostData {
   id: string;
   title: string;
@@ -25,7 +28,14 @@ const BlogPost = () => {
   useEffect(() => {
     const fetchPost = async () => {
       if (!slug) return;
+      // Dynamically import supabase only when not using local blogs.
+      if (USE_LOCAL_BLOGS) {
+        // Local mode: redirect back to blog list (no single-post view for local links).
+        navigate('/blog');
+        return;
+      }
 
+      const { supabase } = await import('@/integrations/supabase/client');
       const { data, error } = await supabase
         .from('blogs')
         .select('*')

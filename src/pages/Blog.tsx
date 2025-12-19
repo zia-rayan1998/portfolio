@@ -45,6 +45,8 @@ const Blog = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
+      // Dynamically import the supabase client only when needed.
+      const { supabase } = await import('@/integrations/supabase/client');
       const { data, error } = await supabase
         .from('blogs')
         .select('id, title, slug, excerpt, cover_image, created_at')
@@ -57,7 +59,12 @@ const Blog = () => {
       setIsLoading(false);
     };
 
-    fetchPosts();
+    if (USE_LOCAL_BLOGS) {
+      // Use curated local list; skip remote fetch.
+      setIsLoading(false);
+    } else {
+      fetchPosts();
+    }
   }, []);
 
   return (
