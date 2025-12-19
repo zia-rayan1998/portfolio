@@ -1,36 +1,34 @@
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 const skills = {
   frontend: [
     { name: 'React', icon: 'https://skillicons.dev/icons?i=react' },
-    { name: 'Next.js', icon: 'https://skillicons.dev/icons?i=nextjs' },
     { name: 'TypeScript', icon: 'https://skillicons.dev/icons?i=typescript' },
     { name: 'JavaScript', icon: 'https://skillicons.dev/icons?i=javascript' },
     { name: 'Tailwind CSS', icon: 'https://skillicons.dev/icons?i=tailwindcss' },
     { name: 'Redux', icon: 'https://skillicons.dev/icons?i=redux' },
-    { name: 'Sass', icon: 'https://skillicons.dev/icons?i=sass' },
     { name: 'Figma', icon: 'https://skillicons.dev/icons?i=figma' },
+    { name: 'HTML' , icon: 'https://skillicons.dev/icons?i=html'},
+    { name: 'css' , icon: 'https://skillicons.dev/icons?i=css'},
+
+
   ],
   backend: [
-    { name: 'Node.js', icon: 'https://skillicons.dev/icons?i=nodejs' },
     { name: 'Express', icon: 'https://skillicons.dev/icons?i=express' },
+    { name: 'flask' , icon: 'https://skillicons.dev/icons?i=flask'},
     { name: 'MongoDB', icon: 'https://skillicons.dev/icons?i=mongodb' },
-    { name: 'PostgreSQL', icon: 'https://skillicons.dev/icons?i=postgresql' },
-    { name: 'Prisma', icon: 'https://skillicons.dev/icons?i=prisma' },
-    { name: 'Redis', icon: 'https://skillicons.dev/icons?i=redis' },
     { name: 'Firebase', icon: 'https://skillicons.dev/icons?i=firebase' },
     { name: 'Supabase', icon: 'https://skillicons.dev/icons?i=supabase' },
+    { name: 'MYSQL' , icon: 'https://skillicons.dev/icons?i=mysql'},
   ],
   tools: [
     { name: 'Git', icon: 'https://skillicons.dev/icons?i=git' },
     { name: 'GitHub', icon: 'https://skillicons.dev/icons?i=github' },
-    { name: 'Docker', icon: 'https://skillicons.dev/icons?i=docker' },
-    { name: 'AWS', icon: 'https://skillicons.dev/icons?i=aws' },
     { name: 'Vercel', icon: 'https://skillicons.dev/icons?i=vercel' },
+    { name: 'Netlify', icon: 'https://skillicons.dev/icons?i=netlify' },
     { name: 'VS Code', icon: 'https://skillicons.dev/icons?i=vscode' },
-    { name: 'Linux', icon: 'https://skillicons.dev/icons?i=linux' },
-    { name: 'Postman', icon: 'https://skillicons.dev/icons?i=postman' },
+    { name: 'Docker', icon: 'https://skillicons.dev/icons?i=docker' },
   ],
 };
 
@@ -38,7 +36,18 @@ const Skills = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
+  const [active, setActive] = useState<'All'|'Frontend'|'Backend'|'Tools'>('Frontend');
+
   const allSkills = [...skills.frontend, ...skills.backend, ...skills.tools];
+
+  const displayedSkills =
+    active === 'All'
+      ? allSkills
+      : active === 'Frontend'
+      ? skills.frontend
+      : active === 'Backend'
+      ? skills.backend
+      : skills.tools;
 
   return (
     <section id="skills" ref={ref} className="relative py-20 md:py-32 overflow-hidden">
@@ -53,7 +62,7 @@ const Skills = () => {
           transition={{ duration: 0.5 }}
           className="mb-12"
         >
-          <span className="section-divider">{'// Arsenal'}</span>
+          <span className="section-divider">{'// Skills'}</span>
         </motion.div>
 
         {/* Skills Grid */}
@@ -63,7 +72,7 @@ const Skills = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex flex-wrap justify-center gap-4 md:gap-6"
         >
-          {allSkills.map((skill, index) => (
+          {displayedSkills.map((skill, index) => (
             <motion.div
               key={skill.name}
               initial={{ opacity: 0, scale: 0.8 }}
@@ -98,14 +107,18 @@ const Skills = () => {
           transition={{ duration: 0.5, delay: 1 }}
           className="mt-16 flex flex-wrap justify-center gap-4"
         >
-          {['Frontend', 'Backend', 'DevOps', 'Tools'].map((category, index) => (
-            <span
-              key={category}
-              className="px-4 py-2 rounded-full border border-border text-sm text-muted-foreground"
-            >
-              {category}
-            </span>
-          ))}
+          {['Frontend', 'Backend', 'Tools', 'All'].map((category) => {
+            const activeClass = active === category ? 'bg-gradient-to-r from-amber-400 to-amber-300 text-black border-transparent' : 'border border-border text-muted-foreground';
+            return (
+              <button
+                key={category}
+                onClick={() => setActive(category as any)}
+                className={`px-4 py-2 rounded-full text-sm transition ${activeClass}`}
+              >
+                {category}
+              </button>
+            );
+          })}
         </motion.div>
       </div>
     </section>
