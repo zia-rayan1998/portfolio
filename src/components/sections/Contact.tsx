@@ -7,8 +7,8 @@ const Contact = () => {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   const socialLinks = [
-    { icon: Github, href: 'https://github.com', label: 'GitHub', color: 'hover:text-foreground' },
-    { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn', color: 'hover:text-blue-400' },
+    { icon: Github, href: 'https://github.com/zia-rayan1998', label: 'GitHub', color: 'hover:text-foreground' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/md-zia-uddin-10614a2a9/', label: 'LinkedIn', color: 'hover:text-blue-400' },
     { icon: Mail, href: 'mailto:hello@example.com', label: 'Email', color: 'hover:text-primary' },
   ];
 

@@ -16,6 +16,29 @@ interface BlogPost {
   created_at: string;
 }
 
+// Toggle to use a local, hand-curated list of blog links (Medium etc.)
+const USE_LOCAL_BLOGS = true;
+
+type LocalBlog = {
+  title: string;
+  excerpt?: string | null;
+  url: string;
+  cover_image?: string | null;
+  date?: string | null;
+};
+
+// Example JSON you can edit quickly to add Medium posts
+const localBlogs: LocalBlog[] = [
+  {
+    title: '(JWT) explained the fun way',
+    excerpt: 'Lessons learned from real-world projects and scaling frontend architecture.',
+    url: 'https://medium.com/@ziauddinrayan97/jwt-explained-the-fun-way-a-developers-guide-to-tokens-66248bbc0b61',
+    cover_image: 'JWT image.jpg',
+    date: 'Dec 20, 2025',
+  },
+  // add more entries here
+];
+
 const Blog = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -74,6 +97,50 @@ const Blog = () => {
                 <div className="h-4 bg-muted rounded w-full mb-4" />
                 <div className="h-4 bg-muted rounded w-1/2" />
               </div>
+            ))}
+          </div>
+        ) : USE_LOCAL_BLOGS ? (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {localBlogs.map((post, index) => (
+              <motion.article
+                key={post.title + index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.08 }}
+              >
+                <div className="h-full glass-card rounded-xl p-0 hover-lift border border-border/50 overflow-hidden flex flex-col">
+                  {post.cover_image ? (
+                    <div className="h-48 overflow-hidden">
+                      <img
+                        src={post.cover_image}
+                        alt={post.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                  ) : (
+                    <div className="h-48 bg-muted flex items-center justify-center text-muted-foreground">No image</div>
+                  )}
+
+                  <div className="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                      <h3 className="text-xl font-bold mb-2">{post.title}</h3>
+                      {post.excerpt && <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{post.excerpt}</p>}
+                    </div>
+
+                    <div className="mt-4">
+                      <a
+                        href={post.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-primary text-primary hover:bg-primary/10 transition-colors font-medium"
+                      >
+                        Read on Medium
+                        <ArrowRight className="w-4 h-4" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </motion.article>
             ))}
           </div>
         ) : posts.length === 0 ? (

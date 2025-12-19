@@ -5,8 +5,8 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: Github, href: 'https://github.com', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
+    { icon: Github, href: 'https://github.com/zia-rayan1998', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/md-zia-uddin-10614a2a9/', label: 'LinkedIn' },
     { icon: Mail, href: 'mailto:hello@example.com', label: 'Email' },
   ];
 
@@ -47,9 +47,9 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
-            <a href="#about" className="hover:text-foreground transition-colors">About</a>
-            <a href="#projects" className="hover:text-foreground transition-colors">Projects</a>
-            <a href="#contact" className="hover:text-foreground transition-colors">Contact</a>
+            <a href="/#about" className="hover:text-foreground transition-colors">About</a>
+            <a href="/#projects" className="hover:text-foreground transition-colors">Projects</a>
+            <a href="/#contact" className="hover:text-foreground transition-colors">Contact</a>
           </div>
         </div>
       </div>

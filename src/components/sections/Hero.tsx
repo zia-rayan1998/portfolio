@@ -126,7 +126,7 @@ const Hero = () => {
               className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors line-glow"
             >
               <BookOpen size={16} />
-              <span>Read My Journal</span>
+              <span>Read My Blogs</span>
             </Link>
           </motion.div>
         </div>

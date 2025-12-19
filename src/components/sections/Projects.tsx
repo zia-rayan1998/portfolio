@@ -6,38 +6,37 @@ import { Button } from '@/components/ui/button';
 
 const projects = [
   {
-    title: 'ChatVerse',
-    description: 'Real Time Chat Application with Socket.IO for real-time communication.',
-    tags: ['React.js', 'Socket.IO', 'Node.js', 'Express'],
+    title: 'BinAlert',
+    description: 'Intelligent Waste Detection & Dynamic Routing for smart Cities.',
+    tags: ['React.js', 'vite', 'typescript', 'google gemini 2.5', 'leaflet','Openstreetmap','Tailwind'],
     status: 'Completed',
-    date: 'June 2025',
-    github: 'https://github.com',
-    demo: null,
+    date: 'Dec 2025',
+    github: 'https://github.com/zia-rayan1998/BinAlert',
+    demo: 'https://aistudio.google.com/apps/drive/1zsUe3N5Y1HVVrNkU4CdPjK60sWQFEXRf?fullscreenApplet=true&showPreview=true&showAssistant=true',
   },
   {
-    title: 'D-Hosting',
-    description: 'Decentralized Web Hosting Platform with an inbuilt Search Engine using IPFS and Solidity smart contracts.',
-    tags: ['IPFS', 'TypeScript', 'NextJS', 'Solidity', 'Ethereum'],
+    title: 'FloodGuard',
+    description: 'An application which can help flood effected victims to find nearby shelters and hospitals in  real time.',
+    tags: ['javascript', 'flask', 'mysql', 'openstreetmap'],
     status: 'Completed',
     date: 'Jan 2025',
-    github: 'https://github.com',
+    github: 'https://github.com/zia-rayan1998/Flood_Guard',
     demo: null,
   },
   {
-    title: 'TopCode',
-    description: 'Code editor with multi-language support for compiling and running code.',
-    tags: ['React.js', 'API Integration', 'Monaco Editor'],
+    title: 'SmartMeds',
+    description: 'A smart medicine recommendation system which predicts early diseases based on user symptoms',
+    tags: ['javascript', 'API Integration', 'SVC algo', 'flask','pickle'],
     status: 'Completed',
-    date: 'Oct 2024',
-    github: 'https://github.com',
-    demo: 'https://example.com',
+    date: 'nov 2024',
+    github: 'https://github.com/zia-rayan1998/SmartMeds',
   },
   {
     title: 'Portfolio',
     description: 'Modern developer portfolio with smooth animations and dark theme.',
     tags: ['React', 'TypeScript', 'Framer Motion', 'Tailwind'],
     status: 'Completed',
-    date: 'Dec 2024',
+    date: 'Dec 2025',
     github: 'https://github.com',
     demo: 'https://example.com',
   },
@@ -146,7 +145,7 @@ const Projects = () => {
             className="gap-2"
             asChild
           >
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/zia-rayan1998?tab=repositories" target="_blank" rel="noopener noreferrer">
               <Github size={18} />
               view_all_repositories
             </a>
