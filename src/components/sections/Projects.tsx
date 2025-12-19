@@ -37,8 +37,8 @@ const projects = [
     tags: ['React', 'TypeScript', 'Framer Motion', 'Tailwind'],
     status: 'Completed',
     date: 'Dec 2025',
-    github: 'https://github.com',
-    demo: 'https://example.com',
+    github: 'https://github.com/zia-rayan1998/portfolio',
+    demo: 'https://ziauddin-portfolio.netlify.app/',
   },
 ];
 
